@@ -1,0 +1,238 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Raleway, sans-serif;
+
+    min-width: 320px;
+}
+
+.wrap {
+    display: flex;
+    justify-content: space-between;
+
+    @media(max-width: 640px) {
+        display: block;
+    }
+}
+
+aside {
+    flex: 0 0 30%;
+    min-width: 180px;
+    max-width: 250px;
+
+    input {
+        outline: none;
+    }
+
+    .menu-toggle {
+        > span, > input {
+            display: none;
+        }
+    }
+
+    .filters {
+        padding: 25px 20px;
+
+        label {
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        button {
+            height: 40px;
+            line-height: 30px;
+            margin-top: 30px;
+            padding: 0 20px;
+            color: #ffffff;
+            font-size: 14px;
+            text-transform: uppercase;
+            background: #1bb7ff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .input-range {
+            &__slider {
+                background: #ffffff;
+                border-color: #1bb7ff;
+            }
+
+            &__track--active {
+                background: #1bb7ff;
+            }
+        }
+    }
+
+    @media(max-width: 640px) {
+        @import 'partials/_mobile-menu.scss';
+
+        .menu-toggle {
+            span {
+                display: block;
+            }
+        }
+
+        //todo add hamburger
+        min-width: 0px;
+        max-width: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        .filters {
+            position: absolute;
+            width: 280px;
+            height: 100vh;
+            margin: -77px 0 0 -50px;
+            padding: 125px 20px 50px 50px;
+
+            background: rgba(118, 163, 169, 0.85);
+            list-style-type: none;
+            -webkit-font-smoothing: antialiased;
+
+            transform-origin: 0% 0%;
+            transform: translate(-100%, 0);
+
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+
+            .input-range__label{
+                color: #000;
+            }
+        }
+    }
+}
+
+main {
+    flex: 1 1 auto;
+    padding: 50px 0;
+
+    @media(max-width: 640px){
+        padding: 100px 0 60px;
+    }
+}
+
+.articles {
+    &--item {
+        display: inline-block;
+        width: 30%;
+        margin: 0 calc((100% / 3 - 30%) / 2);
+        border: 1px solid #e2e2e2;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:nth-of-type(n+4) {
+            margin-top: (100% / 3 - 30%);
+        }
+
+        figure {
+            position: relative;
+            height: 200px;
+            margin: 0;
+            overflow: hidden;
+
+            @media(max-width: 991px) {
+                height: 17vw;
+            }
+        }
+
+        figcaption {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100%;
+            height: auto;
+            transform: translate(-50%, -50%);
+        }
+
+        .info {
+            padding: 20px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            vertical-align: middle;
+            margin-top: 10px;
+        }
+
+        .category {
+            color: #aba0a0;
+        }
+
+        p {
+            margin: 0;
+            color: black;
+        }
+    }
+
+    @media(max-width: 767px) {
+        &--item {
+            width: 45%;
+            margin: 0 2.5%;
+            border: 1px solid #e2e2e2;
+
+            &:nth-of-type(n+3) {
+                margin-top: 5%;
+            }
+
+            figure {
+                height: 20vw;
+            }
+
+            .info {
+                padding: 15px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @media(max-width: 640px) {
+        figure {
+            height: 25vw;
+        }
+    }
+
+    @media(max-width: 480px) {
+        &--item {
+            width: 90%;
+            margin: 0 5%;
+            border: 1px solid #e2e2e2;
+
+            &:nth-of-type(n+2) {
+                margin-top: 10%;
+            }
+        }
+
+        figure{
+            height: 45vw;
+            min-height: 150px;
+        }
+    }
+}
